@@ -4,8 +4,13 @@
 [toc]
 
 ## 设计模式
-模式名 | 路径
+名称 | 路径
 ---|---
 代理模式 | com.rencc.study.design.proxy
+
+## 算法
+名称 | 路径
+---|---
+归并算法 | com.rencc.study.design.algorithm
 
 
