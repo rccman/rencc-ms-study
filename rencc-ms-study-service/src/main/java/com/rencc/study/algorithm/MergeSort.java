@@ -39,16 +39,11 @@ public class MergeSort {
         int i = 0;
         //左边序列和右边序列起始索引
         int j = low, k = mid + 1;
-        int n = 0;
         while (j <= mid && k <= high) {
             if (arr[j] < arr[k]) {
                 tmp[i++] = arr[j++];
             } else {
                 tmp[i++] = arr[k++];
-                if(arr[j] == arr[k]){
-                    j++;
-                    n++;
-                }
             }
         }
         //若左边序列还有剩余，则将其全部拷贝进tmp[]中
