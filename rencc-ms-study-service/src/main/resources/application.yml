@@ -5,5 +5,11 @@ spring:
     active: prod
   application:
     name: rencc-ms-study-service
+  redis:
+    host: redis.51gofunev.com
+    password: TestRedis2018
+    port: 6379
+    timeout: 3000
+    database: 6
 logging:
   config: classpath:logback-boot.xml

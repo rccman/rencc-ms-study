@@ -7,7 +7,7 @@
     <groupId>com.rencc.ms</groupId>
     <artifactId>rencc-ms-study-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <modules>
         <module>rencc-ms-study-model</module>
         <module>rencc-ms-study-service</module>
@@ -24,8 +24,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <rencc.common.version>1.0-SNAPSHOT</rencc.common.version>
-        <rencc.ms.study.version>1.0-SNAPSHOT</rencc.ms.study.version>
+        <rencc.common.version>1.0.1-SNAPSHOT</rencc.common.version>
+        <rencc.ms.study.version>1.0.1-SNAPSHOT</rencc.ms.study.version>
     </properties>
 
     <dependencyManagement>
@@ -38,6 +38,11 @@
             <dependency>
                 <groupId>com.rencc.ms</groupId>
                 <artifactId>rencc-ms-common-service</artifactId>
+                <version>${rencc.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.rencc.ms</groupId>
+                <artifactId>rencc-ms-common-cache</artifactId>
                 <version>${rencc.common.version}</version>
             </dependency>
         </dependencies>
