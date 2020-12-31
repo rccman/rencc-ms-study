@@ -3,12 +3,14 @@ package com.rencc.study;
 import com.alibaba.fastjson.JSON;
 import com.rencc.common.cache.redis.RedisService;
 import com.rencc.study.redis.IDGenerator;
+import com.rencc.study.utils.RedisLockTool;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,6 +34,9 @@ public class TestRedis {
 
     @Autowired
     private IDGenerator idGenerator;
+
+    @Autowired
+    private RedisLockTool redisLockTool;
 
 
     @Test
@@ -104,6 +109,26 @@ public class TestRedis {
     public void testRedisLuaID() {
         String id = idGenerator.nextIDLua();
         log.info(id);
+    }
+
+    @Test
+    public void testRedisLock() throws InterruptedException {
+        String key = "myLock";
+        String value = UUID.randomUUID().toString();
+        boolean lock = redisLockTool.tryGetDistributedLock(key, value, 60);
+        log.info("第一次上锁结果={}",String.valueOf(lock));
+
+        boolean lock2 = redisLockTool.tryGetDistributedLock(key, value, 60);
+        log.info("第二次上锁结果={}",String.valueOf(lock2));
+
+        Thread.sleep(20000L);
+
+        boolean unLock = redisLockTool.releaseDistributedLock(key, UUID.randomUUID().toString());
+        log.info("第一次解锁结果={}",String.valueOf(unLock));
+
+        boolean unLock2 = redisLockTool.releaseDistributedLock(key, value);
+        log.info("第二次解锁结果={}",String.valueOf(unLock2));
+
     }
 
 }
