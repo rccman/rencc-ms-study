@@ -2,6 +2,7 @@ package com.rencc.study;
 
 import com.alibaba.fastjson.JSON;
 import com.rencc.common.cache.redis.RedisService;
+import com.rencc.study.redis.IDGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class TestRedis {
 
     @Autowired
     private RedisService redisService;
+
+    @Autowired
+    private IDGenerator idGenerator;
 
 
     @Test
@@ -84,6 +88,22 @@ public class TestRedis {
     public void testRedisGetHash() {
         Object hashKey = redisService.getHashCacheAll(TEST_HASH_KEY);
         log.info("测试Redis Hash读取value={}", JSON.toJSONString(hashKey));
+    }
+
+    @Test
+    public void testRedisID() {
+        for (int i = 0; i < 10; i++) {
+            int finalI = i;
+            String id = idGenerator.nextID();
+            log.info(id);
+        }
+
+    }
+
+    @Test
+    public void testRedisLuaID() {
+        String id = idGenerator.nextIDLua();
+        log.info(id);
     }
 
 }
