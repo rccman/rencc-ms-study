@@ -11,5 +11,10 @@
 
     <artifactId>rencc-ms-study-model</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.rencc.ms</groupId>
+            <artifactId>rencc-ms-common-model</artifactId>
+        </dependency>
+    </dependencies>
 </project>
