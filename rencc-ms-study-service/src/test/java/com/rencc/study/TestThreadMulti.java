@@ -42,7 +42,7 @@ public class TestThreadMulti {
             public void run() {
                 //不抛异常
 //                int[] aa = new int[2];
-//                System.out.println(aa[3]);
+//                System.out.println(aa[3]);ThreadLocalMap
                 user.setName(String.valueOf(Thread.currentThread().getId()));
             }
         }, user);
