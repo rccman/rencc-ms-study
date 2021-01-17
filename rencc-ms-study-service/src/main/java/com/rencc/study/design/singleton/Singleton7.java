@@ -1,6 +1,6 @@
 package com.rencc.study.design.singleton;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 
 /**
  * @Description: 容器
@@ -9,18 +9,22 @@ import java.util.concurrent.ConcurrentHashMap;
  **/
 public class Singleton7 {
 
-    private static ConcurrentHashMap<String, Object> ioc = new ConcurrentHashMap<>();
+    private static HashMap<String, Object> ioc = new HashMap<>();
 
     private static Object getBean(String className) {
         if (!ioc.containsKey(className)) {
-            Object bean = null;
-            try {
-                bean = Class.forName(className).newInstance();
+            synchronized (Singleton7.class) {
+                if (!ioc.containsKey(className)) {
+                    Object bean = null;
+                    try {
+                        bean = Class.forName(className).newInstance();
 //                bean = ClassLoader.getSystemClassLoader().loadClass(className);
-                ioc.put(className,bean);
-                return bean;
-            } catch (Exception e) {
-                e.printStackTrace();
+                        ioc.put(className, bean);
+                        return bean;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
         return ioc.get(className);
