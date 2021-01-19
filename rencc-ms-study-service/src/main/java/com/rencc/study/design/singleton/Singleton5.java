@@ -6,7 +6,7 @@ package com.rencc.study.design.singleton;
  * @Date: 2021/1/17 20:13
  **/
 public class Singleton5 {
-    private static Singleton5 singleton5 = null;
+    private volatile static Singleton5 singleton5 = null;
 
     private Singleton5(){
 
