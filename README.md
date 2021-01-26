@@ -11,6 +11,9 @@
 ## 算法
 名称 | 路径
 ---|---
-归并算法 | com.rencc.study.design.algorithm
+冒泡排序| com.rencc.study.algorithm.sort.BubblingSort
+选择排序| com.rencc.study.algorithm.sort.SelectionSort
+归并算法 | com.rencc.study.algorithm.sort.MergeSort
+快速排序 | com.rencc.study.algorithm.sort.QuickSort
 
 

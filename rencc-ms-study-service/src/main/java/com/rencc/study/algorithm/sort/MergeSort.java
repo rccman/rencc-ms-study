@@ -1,4 +1,4 @@
-package com.rencc.study.algorithm;
+package com.rencc.study.algorithm.sort;
 
 
 /**
