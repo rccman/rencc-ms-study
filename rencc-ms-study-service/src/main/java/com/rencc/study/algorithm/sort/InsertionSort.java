@@ -19,8 +19,8 @@ public class InsertionSort {
     private static void solution(int[] array) {
         int tmp;
         for (int i = 0; i < array.length-1; i++) {
-            tmp = array[i+1];
             int preIndex = i;
+            tmp = array[preIndex+1];
             while (preIndex >= 0 && tmp < array[preIndex]) {
                 array[preIndex + 1] = array[preIndex];
                 preIndex--;
